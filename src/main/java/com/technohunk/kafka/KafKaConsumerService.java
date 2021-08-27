@@ -19,10 +19,23 @@ public class KafKaConsumerService
 		logger.info(String.format("#####MESSAGE RECIEVED FROM CONSUMER##-1 -> %s", message));
 	}
 	
+	
 	@KafkaListener(topics = "${general.topic.name}", 
 			groupId = "${general.topic.group.id}")
 	public void consume2(String message) {
 		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-2 -> %s", message));
+	}
+	
+	@KafkaListener(topics = "${general.topic.name}", 
+			groupId = "${general.topic.group.id}")
+	public void consume3(String message) {
+		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-3 -> %s", message));
+	}
+	
+	@KafkaListener(topics = "${general.topic.name}", 
+			groupId = "${general.topic.group.id}")
+	public void consume4(String message) {
+		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-4 -> %s", message));
 	}
 	
 	
