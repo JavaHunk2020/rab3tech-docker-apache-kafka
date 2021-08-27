@@ -16,13 +16,13 @@ public class KafKaConsumerService
 	@KafkaListener(topics = "${general.topic.name}", 
 			groupId = "${general.topic.group.id}")
 	public void consume1(String message) {
-		logger.info(String.format("Message recieved from consumer1 -> %s", message));
+		logger.info(String.format("#####MESSAGE RECIEVED FROM CONSUMER##-1 -> %s", message));
 	}
 	
 	@KafkaListener(topics = "${general.topic.name}", 
 			groupId = "${general.topic.group.id}")
 	public void consume2(String message) {
-		logger.info(String.format("Message recieved from consumer2 -> %s", message));
+		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-2 -> %s", message));
 	}
 	
 	
