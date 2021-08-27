@@ -28,6 +28,30 @@ public class KafkaConsumerConfig
 	private String userGroupId;
 
 	// 1. Consume string data from Kafka
+	
+	@Bean
+	public ConsumerFactory<String, String> npconsumerFactory() {
+		Map<String, Object> props = new HashMap<>();
+		//kafka.bootstrapAddress=localhost:9092
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, "ram500gn");
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, 
+				StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, 
+				StringDeserializer.class);
+		props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+		return new DefaultKafkaConsumerFactory<>(props);
+	}
+	
+	@Bean
+	public ConcurrentKafkaListenerContainerFactory<String, String> 
+									npkafkaListenerContainerFactory() {
+		ConcurrentKafkaListenerContainerFactory<String, String> factory 
+			= new ConcurrentKafkaListenerContainerFactory<>();
+		factory.setConsumerFactory(npconsumerFactory());
+		return factory;
+	}
+	
 
 	@Bean
 	public ConsumerFactory<String, String> consumerFactory() {

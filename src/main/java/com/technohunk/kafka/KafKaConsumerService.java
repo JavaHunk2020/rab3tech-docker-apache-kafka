@@ -39,6 +39,14 @@ public class KafKaConsumerService
 	}
 	
 	
+	//${general.topic.name} =>>>3 partitions
+	@KafkaListener(topics = "${general.topic.name}", 
+			groupId = "ram500gn",containerFactory = "npkafkaListenerContainerFactory")
+	public void consume5(String message) {
+		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-5 -> %s", message));
+	}
+	
+	
 	@KafkaListener(topics = "${user.topic.name}", 
 			groupId = "${user.topic.group.id}",
 			containerFactory = "userKafkaListenerContainerFactory")
