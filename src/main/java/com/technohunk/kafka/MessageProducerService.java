@@ -36,7 +36,7 @@ public class MessageProducerService {
 			   kafkaTemplate.send(topicName, message);
 			   
 			 }
-		, 1, 3, TimeUnit.SECONDS);
+		, 1, 6, TimeUnit.SECONDS);
 		
 	}
 	

@@ -46,6 +46,12 @@ public class KafKaConsumerService
 		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-5 -> %s", message));
 	}
 	
+	@KafkaListener(topics = "${general.topic.name}", 
+			groupId = "ram600gn",containerFactory = "ram600gnFactoryListener")
+	public void consume6(String message) {
+		logger.info(String.format("###MESSAGE RECIEVED FROM CONSUMER#-6 -> %s", message));
+	}
+	
 	
 	@KafkaListener(topics = "${user.topic.name}", 
 			groupId = "${user.topic.group.id}",
